@@ -64,11 +64,15 @@ ORDER BY id
             {
                 txt_nev.Text = " ";
                 txt_uzlet.Text = " ";
+                btn_delete.Visible = false;
+                btn_edit.Visible = false;
             }
             else
             {
                 txt_nev.Text = p.Nev;
                 txt_uzlet.Text = p.Uzlet;
+                btn_delete.Visible = true;
+                btn_edit.Visible = true;
             }
 
 
@@ -115,6 +119,8 @@ VALUES (@id, @nev, @uzlet);
                 insertComm.Parameters.AddWithValue("@uzlet", uzlet);
                 int erintettSorok = insertComm.ExecuteNonQuery();
                 lbox_termekek.Items.Add(ajandek);
+                btn_delete.Visible = false;
+                btn_edit.Visible = false;
             }
 
         }
@@ -154,6 +160,8 @@ UPDATE ajandek SET nev = @nev, uzlet = @uzlet WHERE ajandek.id = @id;
             editComm.Parameters.AddWithValue("@nev", txt_nev.Text);
             editComm.Parameters.AddWithValue("@uzlet", txt_uzlet.Text);
             int erintettSorok = editComm.ExecuteNonQuery();
+            btn_delete.Visible = false;
+            btn_edit.Visible = false;
         }
     }
 }

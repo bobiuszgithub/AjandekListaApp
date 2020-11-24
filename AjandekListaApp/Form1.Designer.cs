@@ -87,6 +87,7 @@
             this.btn_delete.TabIndex = 5;
             this.btn_delete.Text = "törlés";
             this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Visible = false;
             this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // btn_edit
@@ -97,6 +98,7 @@
             this.btn_edit.TabIndex = 6;
             this.btn_edit.Text = "módosítás";
             this.btn_edit.UseVisualStyleBackColor = true;
+            this.btn_edit.Visible = false;
             this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
             // 
             // btn_add
