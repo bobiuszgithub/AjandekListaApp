@@ -62,9 +62,22 @@ ORDER BY nev
 
         private void btn_add_Click(object sender, EventArgs e)
         {
+            int id = 0;
             var nev = txt_nev.Text;
             var uzlet = txt_uzlet.Text;
-            var ajandek = new Ajandek(null, nev, uzlet);
+            var ajandek = new Ajandek(id, nev, uzlet);
+
+            var insertComm = conn.CreateCommand();
+            insertComm.CommandText = @"
+INSERT INTO ajandek (id, nev, uzlet)
+VALUES (@id, @nev, @uzlet);
+";
+            insertComm.Parameters.AddWithValue("@id", null);
+            insertComm.Parameters.AddWithValue("@nev", nev);
+            insertComm.Parameters.AddWithValue("@uzlet", uzlet);
+            int erintettSorok = insertComm.ExecuteNonQuery();
+
+
         }
     }
     }
