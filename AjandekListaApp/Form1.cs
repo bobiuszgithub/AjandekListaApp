@@ -59,5 +59,12 @@ ORDER BY nev
             {
 
             }
+
+        private void btn_add_Click(object sender, EventArgs e)
+        {
+            var nev = txt_nev.Text;
+            var uzlet = txt_uzlet.Text;
+            var ajandek = new Ajandek(null, nev, uzlet);
         }
+    }
     }

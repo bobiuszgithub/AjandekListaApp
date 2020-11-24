@@ -33,12 +33,15 @@
             this.txt_uzlet = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btn_delete = new System.Windows.Forms.Button();
+            this.btn_edit = new System.Windows.Forms.Button();
+            this.btn_add = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(185, 9);
+            this.listBox1.Location = new System.Drawing.Point(274, 9);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(222, 225);
             this.listBox1.TabIndex = 0;
@@ -76,11 +79,42 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "üzlet:";
             // 
+            // btn_delete
+            // 
+            this.btn_delete.Location = new System.Drawing.Point(174, 63);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(75, 23);
+            this.btn_delete.TabIndex = 5;
+            this.btn_delete.Text = "törlés";
+            this.btn_delete.UseVisualStyleBackColor = true;
+            // 
+            // btn_edit
+            // 
+            this.btn_edit.Location = new System.Drawing.Point(93, 63);
+            this.btn_edit.Name = "btn_edit";
+            this.btn_edit.Size = new System.Drawing.Size(75, 23);
+            this.btn_edit.TabIndex = 6;
+            this.btn_edit.Text = "módosítás";
+            this.btn_edit.UseVisualStyleBackColor = true;
+            // 
+            // btn_add
+            // 
+            this.btn_add.Location = new System.Drawing.Point(12, 63);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(75, 23);
+            this.btn_add.TabIndex = 7;
+            this.btn_add.Text = "felvétel";
+            this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_add);
+            this.Controls.Add(this.btn_edit);
+            this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_uzlet);
@@ -100,6 +134,9 @@
         private System.Windows.Forms.TextBox txt_uzlet;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_delete;
+        private System.Windows.Forms.Button btn_edit;
+        private System.Windows.Forms.Button btn_add;
     }
 }
 
