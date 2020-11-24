@@ -26,7 +26,7 @@ namespace AjandekListaApp
 
         public override string ToString()
         {
-            return nev;
+            return string.Format("{0}. {1} - {2}", id, nev, uzlet);
         }
     }
 }

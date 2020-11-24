@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lbox_termekek = new System.Windows.Forms.ListBox();
             this.txt_nev = new System.Windows.Forms.TextBox();
             this.txt_uzlet = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,16 +36,17 @@
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_edit = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
+            this.txt_idtest = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // listBox1
+            // lbox_termekek
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(274, 9);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(222, 225);
-            this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.lbox_termekek.FormattingEnabled = true;
+            this.lbox_termekek.Location = new System.Drawing.Point(274, 9);
+            this.lbox_termekek.Name = "lbox_termekek";
+            this.lbox_termekek.Size = new System.Drawing.Size(222, 225);
+            this.lbox_termekek.TabIndex = 0;
+            this.lbox_termekek.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // txt_nev
             // 
@@ -87,6 +88,7 @@
             this.btn_delete.TabIndex = 5;
             this.btn_delete.Text = "törlés";
             this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // btn_edit
             // 
@@ -107,11 +109,19 @@
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
+            // txt_idtest
+            // 
+            this.txt_idtest.Location = new System.Drawing.Point(68, 214);
+            this.txt_idtest.Name = "txt_idtest";
+            this.txt_idtest.Size = new System.Drawing.Size(100, 20);
+            this.txt_idtest.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txt_idtest);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.btn_edit);
             this.Controls.Add(this.btn_delete);
@@ -119,7 +129,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_uzlet);
             this.Controls.Add(this.txt_nev);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.lbox_termekek);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -129,7 +139,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lbox_termekek;
         private System.Windows.Forms.TextBox txt_nev;
         private System.Windows.Forms.TextBox txt_uzlet;
         private System.Windows.Forms.Label label1;
@@ -137,6 +147,7 @@
         private System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.Button btn_edit;
         private System.Windows.Forms.Button btn_add;
+        private System.Windows.Forms.TextBox txt_idtest;
     }
 }
 
