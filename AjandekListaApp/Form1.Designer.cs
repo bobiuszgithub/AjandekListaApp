@@ -36,7 +36,6 @@
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_edit = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
-            this.txt_idtest = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lbox_termekek
@@ -110,19 +109,11 @@
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
-            // txt_idtest
-            // 
-            this.txt_idtest.Location = new System.Drawing.Point(68, 214);
-            this.txt_idtest.Name = "txt_idtest";
-            this.txt_idtest.Size = new System.Drawing.Size(100, 20);
-            this.txt_idtest.TabIndex = 8;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txt_idtest);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.btn_edit);
             this.Controls.Add(this.btn_delete);
@@ -148,7 +139,6 @@
         private System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.Button btn_edit;
         private System.Windows.Forms.Button btn_add;
-        private System.Windows.Forms.TextBox txt_idtest;
     }
 }
 

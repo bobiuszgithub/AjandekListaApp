@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Data.SqlTypes;
 using System.Windows.Forms;
 
 namespace AjandekListaApp
@@ -40,11 +41,12 @@ ORDER BY id
                     string nev = reader.GetString("nev");
 
                     string uzlet;
+
                     try
                     {
                         uzlet = reader.GetString("uzlet");
                     }
-                    catch (sqlNullValueException ex)
+                    catch (SqlNullValueException ex)
                     {
                         uzlet = null;
                     }
@@ -65,7 +67,6 @@ ORDER BY id
             }
             else
             {
-                txt_idtest.Text = Convert.ToString(p.Id);
                 txt_nev.Text = p.Nev;
                 txt_uzlet.Text = p.Uzlet;
             }
@@ -82,20 +83,37 @@ ORDER BY id
                 id = p.Id;
             }
             var nev = txt_nev.Text;
+
             var uzlet = txt_uzlet.Text;
+
+            if (uzlet == "")
+            {
+                uzlet = "Saját készítésű";
+            }
             var ajandek = new Ajandek(id, nev, uzlet);
 
-
-            var insertComm = conn.CreateCommand();
-            insertComm.CommandText = @"
+            if (nev.Length > 1000 || uzlet.Length > 1000)
+            {
+                MessageBox.Show("Túl hosszú adatot adtál meg!");
+            }
+            else if (nev == "")
+            {
+                MessageBox.Show("nem lehet üres a név mező!");
+            }
+            else
+            {
+                var insertComm = conn.CreateCommand();
+                insertComm.CommandText = @"
 INSERT INTO ajandek (id, nev, uzlet)
 VALUES (@id, @nev, @uzlet);
 ";
-            insertComm.Parameters.AddWithValue("@id", null);
-            insertComm.Parameters.AddWithValue("@nev", nev);
-            insertComm.Parameters.AddWithValue("@uzlet", uzlet);
-            int erintettSorok = insertComm.ExecuteNonQuery();
-            lbox_termekek.Items.Add(ajandek);
+                insertComm.Parameters.AddWithValue("@id", null);
+                insertComm.Parameters.AddWithValue("@nev", nev);
+                insertComm.Parameters.AddWithValue("@uzlet", uzlet);
+                int erintettSorok = insertComm.ExecuteNonQuery();
+                lbox_termekek.Items.Add(ajandek);
+            }
+
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -106,7 +124,6 @@ VALUES (@id, @nev, @uzlet);
 Delete from ajandek where ajandek.id = @id;
 ";
             Ajandek p = (Ajandek)lbox_termekek.SelectedItem;
-            txt_idtest.Text = Convert.ToString(p.Id);
             int id = p.Id;
             deleteComm.Parameters.AddWithValue("@id", id);
             int erintettSorok = deleteComm.ExecuteNonQuery();
@@ -115,10 +132,14 @@ Delete from ajandek where ajandek.id = @id;
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
-                Ajandek p = (Ajandek)lbox_termekek.SelectedItem;
-                int id = p.Id;
-                Ajandek p2 = new Ajandek(id, txt_nev.Text, txt_uzlet.Text);
-                lbox_termekek.Items[lbox_termekek.SelectedIndex] = p2;
+            Ajandek p = (Ajandek)lbox_termekek.SelectedItem;
+            int id = p.Id;
+            if (p.Uzlet == "")
+            {
+                p.Uzlet = "Saját készítésű";
+            }
+            Ajandek p2 = new Ajandek(id, txt_nev.Text, txt_uzlet.Text);
+            lbox_termekek.Items[lbox_termekek.SelectedIndex] = p2;
 
             var editComm = conn.CreateCommand();
             editComm.CommandText = @"
