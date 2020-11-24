@@ -81,15 +81,18 @@ ORDER BY id
             {
                 Ajandek p = (Ajandek)lbox_termekek.Items[i];
                 id = p.Id;
+                id++;
             }
             var nev = txt_nev.Text;
 
             var uzlet = txt_uzlet.Text;
 
-            if (uzlet == "")
+            if (uzlet == " ")
             {
                 uzlet = "Saját készítésű";
             }
+
+
             var ajandek = new Ajandek(id, nev, uzlet);
 
             if (nev.Length > 1000 || uzlet.Length > 1000)
