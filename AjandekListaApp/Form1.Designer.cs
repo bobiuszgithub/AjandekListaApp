@@ -82,7 +82,7 @@
             // 
             // btn_delete
             // 
-            this.btn_delete.Location = new System.Drawing.Point(174, 63);
+            this.btn_delete.Location = new System.Drawing.Point(93, 63);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(75, 23);
             this.btn_delete.TabIndex = 5;
@@ -92,12 +92,13 @@
             // 
             // btn_edit
             // 
-            this.btn_edit.Location = new System.Drawing.Point(93, 63);
+            this.btn_edit.Location = new System.Drawing.Point(174, 63);
             this.btn_edit.Name = "btn_edit";
             this.btn_edit.Size = new System.Drawing.Size(75, 23);
             this.btn_edit.TabIndex = 6;
             this.btn_edit.Text = "módosítás";
             this.btn_edit.UseVisualStyleBackColor = true;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
             // 
             // btn_add
             // 

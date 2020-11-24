@@ -66,11 +66,19 @@ ORDER BY id
             {
                 txt_idtest.Text = Convert.ToString(p.Id);
             }
+            txt_nev.Text = p.Nev;
+            txt_uzlet.Text = p.Uzlet;
+
         }
 
         private void btn_add_Click(object sender, EventArgs e)
         {
             int id = 0;
+            for (int i = 0; i < lbox_termekek.Items.Count; i++)
+            {
+                Ajandek p = (Ajandek)lbox_termekek.Items[i];
+                id = p.Id;
+            }
             var nev = txt_nev.Text;
             var uzlet = txt_uzlet.Text;
             var ajandek = new Ajandek(id, nev, uzlet);
@@ -85,12 +93,12 @@ VALUES (@id, @nev, @uzlet);
             insertComm.Parameters.AddWithValue("@nev", nev);
             insertComm.Parameters.AddWithValue("@uzlet", uzlet);
             int erintettSorok = insertComm.ExecuteNonQuery();
-
+            lbox_termekek.Items.Add(ajandek);
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
-        
+
             var deleteComm = conn.CreateCommand();
             deleteComm.CommandText = @"
 Delete from ajandek where ajandek.id = @id;
@@ -101,6 +109,15 @@ Delete from ajandek where ajandek.id = @id;
             deleteComm.Parameters.AddWithValue("@id", id);
             int erintettSorok = deleteComm.ExecuteNonQuery();
             lbox_termekek.Items.RemoveAt(lbox_termekek.SelectedIndex);
+        }
+
+        private void btn_edit_Click(object sender, EventArgs e)
+        {
+                Ajandek p = (Ajandek)lbox_termekek.SelectedItem;
+                int id = p.Id;
+                Ajandek p2 = new Ajandek(id, txt_nev.Text, txt_uzlet.Text);
+                lbox_termekek.Items[lbox_termekek.SelectedIndex] = p2;
+
         }
     }
 }

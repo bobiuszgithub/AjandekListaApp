@@ -16,7 +16,15 @@ namespace AjandekListaApp
         {
             this.id = id;
             this.nev = nev;
-            this.uzlet = uzlet;
+            if (uzlet == null)
+            {
+                this.uzlet = "Saját készítésű";
+            }
+            else
+            {
+                this.uzlet = uzlet;
+            }
+            
         }
 
         public int Id { get => id;}
