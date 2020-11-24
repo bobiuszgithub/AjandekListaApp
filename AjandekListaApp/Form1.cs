@@ -87,7 +87,7 @@ ORDER BY id
 
             var uzlet = txt_uzlet.Text;
 
-            if (uzlet == " ")
+            if (txt_uzlet.Text == "")
             {
                 uzlet = "Saját készítésű";
             }
@@ -137,10 +137,11 @@ Delete from ajandek where ajandek.id = @id;
         {
             Ajandek p = (Ajandek)lbox_termekek.SelectedItem;
             int id = p.Id;
-            if (p.Uzlet == "")
+            if (txt_uzlet.Text == "")
             {
-                p.Uzlet = "Saját készítésű";
+                txt_uzlet.Text = "Saját készítésű";
             }
+
             Ajandek p2 = new Ajandek(id, txt_nev.Text, txt_uzlet.Text);
             lbox_termekek.Items[lbox_termekek.SelectedIndex] = p2;
 
