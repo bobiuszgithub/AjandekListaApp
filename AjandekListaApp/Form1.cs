@@ -60,14 +60,16 @@ ORDER BY id
             Ajandek p = (Ajandek)lbox_termekek.SelectedItem;
             if (lbox_termekek.SelectedItem == null)
             {
-
+                txt_nev.Text = " ";
+                txt_uzlet.Text = " ";
             }
             else
             {
                 txt_idtest.Text = Convert.ToString(p.Id);
+                txt_nev.Text = p.Nev;
+                txt_uzlet.Text = p.Uzlet;
             }
-            txt_nev.Text = p.Nev;
-            txt_uzlet.Text = p.Uzlet;
+
 
         }
 
@@ -118,6 +120,15 @@ Delete from ajandek where ajandek.id = @id;
                 Ajandek p2 = new Ajandek(id, txt_nev.Text, txt_uzlet.Text);
                 lbox_termekek.Items[lbox_termekek.SelectedIndex] = p2;
 
+            var editComm = conn.CreateCommand();
+            editComm.CommandText = @"
+UPDATE ajandek SET nev = @nev, uzlet = @uzlet WHERE ajandek.id = @id;
+";
+
+            editComm.Parameters.AddWithValue("@id", id);
+            editComm.Parameters.AddWithValue("@nev", txt_nev.Text);
+            editComm.Parameters.AddWithValue("@uzlet", txt_uzlet.Text);
+            int erintettSorok = editComm.ExecuteNonQuery();
         }
     }
 }
